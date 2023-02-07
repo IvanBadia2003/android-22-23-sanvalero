@@ -3,11 +3,17 @@ package com.example.mvp_simpson_01.lst_simpson.view;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.mvp_simpson_01.R;
+import com.example.mvp_simpson_01.lst_simpson.LstSimpsonContract;
+import com.example.mvp_simpson_01.lst_simpson.model.pojo.Simpson;
 import com.example.mvp_simpson_01.lst_simpson.presenter.LstSimpsonPresenter;
 
-public class LstSimpsonActivity extends AppCompatActivity {
+import java.util.ArrayList;
+
+public class LstSimpsonActivity extends AppCompatActivity implements LstSimpsonContract.View {
+
     private LstSimpsonPresenter lstSimpsonPresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,13 +22,29 @@ public class LstSimpsonActivity extends AppCompatActivity {
 
         initComponents();
         initPresenter();
+        initData();
         lstSimpsonPresenter.lstSimpson(null);
+    }
+
+    public void initPresenter(){
+        lstSimpsonPresenter = new LstSimpsonPresenter();
+    }
+
+    public void initData(){
+        lstSimpsonPresenter.lstSimpson(null);  //SELECT * FROM SIMPSON
     }
     public void initComponents(){
 
     }
 
-    public void initPresenter(){
-        lstSimpsonPresenter = new LstSimpsonPresenter();
+
+    @Override
+    public void successLstSimpson(ArrayList<Simpson> lstSimpson) {
+        // ADAPTER. NOTIFY SET DATA CHANGED
+    }
+
+    @Override
+    public void failureLstSimpson(String err) {
+        Toast.makeText(this, "Los datos no han podido ser cargados", Toast.LENGTH_SHORT).show();
     }
 }
