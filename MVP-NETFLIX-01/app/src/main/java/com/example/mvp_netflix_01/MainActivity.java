@@ -1,0 +1,49 @@
+package com.example.mvp_netflix_01;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.widget.Toast;
+
+import com.example.mvp_netflix_01.contract.LoginContract;
+import com.example.mvp_netflix_01.model.pojo.User;
+import com.example.mvp_netflix_01.presenter.LoginPresenter;
+import com.example.mvp_netflix_01.view.LoginActivity;
+
+public class MainActivity extends AppCompatActivity implements LoginContract.View {
+private static final int SCREEN = 1;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+        final Handler handler = new Handler();
+        // SetTimeOut - setInterval
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent screenChanger = new Intent(
+                        getBaseContext(),
+                        LoginActivity.class
+                );
+                startActivity(screenChanger);
+            }
+        }, 4000);
+    }
+
+    @Override
+    public void successLogin(User user, String mensaje) {
+        Toast.makeText(this, err);
+
+    }
+
+    @Override
+    public void failureLogin(String err) {
+
+    }
+}

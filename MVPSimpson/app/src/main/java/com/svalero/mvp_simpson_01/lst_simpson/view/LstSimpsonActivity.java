@@ -7,7 +7,7 @@ import android.widget.Toast;
 
 import com.svalero.mvp_simpson_01.R;
 import com.svalero.mvp_simpson_01.lst_simpson.LstSimpsonContract;
-import com.svalero.mvp_simpson_01.entities.Simpson;
+import com.svalero.mvp_simpson_01.lst_simpson.model.pojo.Simpson;
 import com.svalero.mvp_simpson_01.lst_simpson.presenter.LstSimpsonPresenter;
 
 import java.util.ArrayList;
@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class LstSimpsonActivity extends AppCompatActivity
            implements LstSimpsonContract.View {
     private LstSimpsonPresenter lstSimpsonPresenter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
